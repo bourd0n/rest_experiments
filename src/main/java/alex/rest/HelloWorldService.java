@@ -1,5 +1,7 @@
 package alex.rest;
 
+import alex.rest.test.Example;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -41,6 +43,13 @@ public class HelloWorldService {
         Object object = sb.getMap().getEmbedded().get(EmBean1.class);
         EmBean1 object1 = (EmBean1) object;
         return Response.status(200).entity(sb.toString()).build();
+    }
+
+    @POST
+    @Path("/sb/post/gen")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response postSB(Example ex){
+        return Response.status(200).entity(ex.toString()).build();
     }
 
 }
